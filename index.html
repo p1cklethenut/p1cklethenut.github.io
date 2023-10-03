@@ -3,13 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Fun Test Website</title>
     <style>
         body {
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #ddd, #ccc); /* Gradient from light grey to dark grey */
+            background-size: 200% 200%;
+            animation: gradientBackground 10s linear infinite;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start; /* Align content to the top */
+            height: 100vh;
+        }
+
+        @keyframes gradientBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
 
         header {
@@ -17,28 +36,29 @@
             color: #fff;
             text-align: center;
             padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 20px;
         }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
+        /* Styling for the top menu */
+        .top-menu {
+            background-color: #333;
+            padding: 10px 0;
             text-align: center;
+            width: 100%;
+            margin-bottom: 20px; /* Add margin to push content below */
         }
 
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
-
-        nav ul li a {
+        .top-menu a {
             text-decoration: none;
-            color: #333;
+            color: #fff;
             font-weight: bold;
+            margin: 0 20px;
             transition: color 0.3s;
         }
 
-        nav ul li a:hover {
-            color: #FF5733; /* Change color on hover */
+        .top-menu a:hover {
+            color: #3498db; /* Change color on hover */
         }
 
         main {
@@ -46,23 +66,26 @@
             text-align: center;
         }
 
-        /* Example animation */
         @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         .animated-text {
-            animation: fadeIn 1s ease-in-out; /* Apply animation */
+            animation: fadeIn 1s ease-in-out;
         }
 
-        /* Additional section styles */
+        /* Styling for sections */
         .section {
-            background-color: #fff;
+            background-color: rgba(255, 255, 255, 0.9);
             border: 1px solid #ddd;
             padding: 20px;
             margin: 20px;
-            border-radius: 5px;
+            border-radius: 15px; /* Rounded corners */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
@@ -76,44 +99,50 @@
 
         /* Styling for non-linear content */
         .highlight {
-            background-color: #FF5733;
+            background-color: #3498db;
             color: #fff;
             padding: 5px 10px;
             border-radius: 3px;
             font-weight: bold;
         }
+
+        /* Sectioning */
+        .sectioning {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-top: 1px solid #ddd;
+            padding: 20px;
+            text-align: center;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        /* Align the top-menu to the top */
+        .top-menu {
+            position: sticky;
+            top: 0;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to the Home Page</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="youtube.html">YouTube</a></li>
-            <li><a href="messaging.html">Messaging</a></li>
-        </ul>
-    </nav>
+    <!-- Top Menu -->
+    <div class="top-menu">
+        <a href="index.html">Home</a>
+        <a href="youtube.html">YouTube</a>
+        <a href="messaging.html">Messaging</a>
+    </div>
     <main>
-        <h2 class="animated-text">Explore our amazing website!</h2>
+        <h2 class="animated-text">This website was made for fun and as a test!</h2>
         <section class="section">
-            <h3>About Us</h3>
-            <p>We are a creative team dedicated to providing quality content and services.</p>
+            <h3>About This Site</h3>
+            <p>I created this website just for fun and as a test project to explore web development.</p>
         </section>
         <section class="section">
             <h3>Our Services</h3>
-            <p>We offer a wide range of services to meet your needs.</p>
-            <ul>
-                <li>Web Design</li>
-                <li>Graphic Design</li>
-                <li>Content Writing</li>
-            </ul>
+            <p>nth just some random code.</p>
         </section>
         <section class="section">
             <h3>Contact Us</h3>
-            <p>Have questions or want to collaborate with us? <span class="highlight">Get in touch!</span></p>
+            <p>nah</p>
         </section>
     </main>
-</body>
-</html>
+    <!-- Sectioning between
