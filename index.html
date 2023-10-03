@@ -4,6 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #FF5733; /* Change color on hover */
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Example animation */
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .animated-text {
+            animation: fadeIn 1s ease-in-out; /* Apply animation */
+        }
+
+        /* Additional section styles */
+        .section {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h3 {
+            color: #333;
+        }
+
+        .section p {
+            color: #666;
+        }
+
+        /* Styling for non-linear content */
+        .highlight {
+            background-color: #FF5733;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -17,7 +96,24 @@
         </ul>
     </nav>
     <main>
-        <p>This is the Home page content.</p>
+        <h2 class="animated-text">Explore our amazing website!</h2>
+        <section class="section">
+            <h3>About Us</h3>
+            <p>We are a creative team dedicated to providing quality content and services.</p>
+        </section>
+        <section class="section">
+            <h3>Our Services</h3>
+            <p>We offer a wide range of services to meet your needs.</p>
+            <ul>
+                <li>Web Design</li>
+                <li>Graphic Design</li>
+                <li>Content Writing</li>
+            </ul>
+        </section>
+        <section class="section">
+            <h3>Contact Us</h3>
+            <p>Have questions or want to collaborate with us? <span class="highlight">Get in touch!</span></p>
+        </section>
     </main>
 </body>
 </html>
