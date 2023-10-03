@@ -99,24 +99,25 @@
         ];
 
         function login() {
-            // Get the entered username and password
             const enteredUsername = document.getElementById('username').value;
             const enteredPassword = document.getElementById('password').value;
 
-            // Check if the entered credentials match any predefined credentials
             const matchedCredential = credentials.find(credential => (
                 credential.username === enteredUsername && credential.password === enteredPassword
             ));
 
-            if (matchedCredential) {
-                // Redirect to home.html on successful login
-                window.location.href = 'home.html';
-                return false; // Prevent the form from submitting
+                if (matchedCredential) {
+                    // Set a session variable to indicate that the user is logged in
+                    sessionStorage.setItem('isLoggedIn', 'true');
+                    // Redirect to home.html on successful login
+                    window.location.href = 'home.html';
+                    return false;
             } else {
                 alert('Invalid username or password. Please try again.');
                 return false;
             }
         }
+    
     </script>
 </body>
 </html>
