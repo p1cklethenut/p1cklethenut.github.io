@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the YouTube Page</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="youtube.html">YouTube</a></li>
+            <li><a href="messaging.html">Messaging</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Embed a YouTube Video</h2>
+        <label for="youtubeLink">Enter a YouTube link:</label>
+        <input type="text" id="youtubeLink" placeholder="https://www.youtube.com/watch?v=VIDEO_ID">
+        <button onclick="embedYouTubeVideo()">Embed</button>
+        <div id="videoContainer"></div>
+    </main>
+
+    <script>
+        function embedYouTubeVideo() {
+            const youtubeLink = document.getElementById('youtubeLink').value;
+            const videoContainer = document.getElementById('videoContainer');
+            
+            // Check if the input is a valid YouTube link
+            const videoId = extractVideoId(youtubeLink);
+
+            if (videoId) {
+                // Create an iframe element for embedding the video
+                const iframe = document.createElement('iframe');
+                iframe.width = '560';
+                iframe.height = '315';
+                iframe.src = `https://www.youtube.com/embed/${videoId}`;
+                iframe frameborder = '0';
+                iframe.allowfullscreen = true;
+
+                // Clear the previous video (if any) and append the new one
+                videoContainer.innerHTML = '';
+                videoContainer.appendChild(iframe);
+            } else {
+                videoContainer.innerHTML = '<p>Invalid YouTube link. Please enter a valid link.</p>';
+            }
+        }
+
+        function extractVideoId(link) {
+            const match = link.match(/(?:\?v=|\/embed\/|\/\d\/|\/vi\/|youtu\.be\/|\/e\/|watch\?v=|\/v\/|\/[a-zA-Z0-9_-]{11})([a-zA-Z0-9_-]{11})/);
+            return (match && match[1]) || null;
+        }
+    </script>
+</body>
+</html>
