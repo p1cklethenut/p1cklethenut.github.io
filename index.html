@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Light grey background color */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .login-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Menu styles */
+        .menu {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            margin: 0 20px;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm" onsubmit="return login()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    <!-- Menu -->
+    
+
+    <script>
+        // Define a set of predefined usernames and passwords
+        const credentials = [
+            { username: 'user1', password: 'password1' },
+            { username: 'user2', password: 'password2' },
+            { username: 'user3', password: 'password3' },
+        ];
+
+        function login() {
+            // Get the entered username and password
+            const enteredUsername = document.getElementById('username').value;
+            const enteredPassword = document.getElementById('password').value;
+
+            // Check if the entered credentials match any predefined credentials
+            const matchedCredential = credentials.find(credential => (
+                credential.username === enteredUsername && credential.password === enteredPassword
+            ));
+
+            if (matchedCredential) {
+                // Redirect to home.html on successful login
+                window.location.href = 'home.html';
+                return false; // Prevent the form from submitting
+            } else {
+                alert('Invalid username or password. Please try again.');
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
