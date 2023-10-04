@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Page</title>
+    <style>
+        body {
+            background-color: #f0f0f0; /* Light grey background color */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+
+        .weather-container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .weather-details {
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        /* Menu styles */
+        .menu {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .menu a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            margin: 0 20px;
+            transition: color 0.3s;
+        }
+
+        .menu a:hover {
+            color: #3498db;
+        }
+    </style>
+    <!-- Link to your JavaScript file for functionality -->
+    <script src="weather.js"></script>
+    <!-- Include a favicon if desired -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Menu -->
+    <div class="menu">
+        <a href="home.html">Home</a>
+        <a href="youtube.html">YouTube</a>
+        <a href="dino.html">Dino</a>
+        <a href="weather.html">Weather</a>
+    </div>
+    <!-- Weather display container -->
+    <div class="weather-container">
+        <h1>Weather Forecast</h1>
+        <div class="weather-info">
+            <div class="weather-details">
+                <!-- Weather information will be displayed here -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>
