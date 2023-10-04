@@ -1,78 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            background-image: url('background.jpg');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-
-        .login-container {
-            background-color: rgba(255, 255, 255, 0.5);
-            /* Semi-transparent white background */
-            padding: 20px;
-            width: 50%;
-            max-width: 800px;
-            text-align: center;
-            color: #333;
-            border-radius: 15px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin: 10px 0;
-        }
-
-        input[type="text"],
-        input[type="password"] {
-            width: 80%;
-            padding: 10px;
-            margin: 10px 0;
-            background: none;
-            border: #111;
-            border-bottom: 1px solid #666;
-            background-color: transparent;
-        }
-
-        button {
-            font-size: 15px;
-            background-color: transparent;
-            border: none;
-            padding: 10px 40%;
-            border-radius: 5px;
-            cursor: pointer;
-            border-radius: 50px;
-            transition: background-color 0.3s;
-            visibility: hidden;
-        }
-
-        button:hover {
-            background-color: #eee;
-        }
+    <style> body { font-family: Arial, sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; background-image: url('background.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; } .login-container { background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */ padding: 20px; width: 50%; max-width: 800px; text-align: center; color: #333; border-radius: 15px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); } h2 { font-size: 24px; margin-bottom: 20px; } label { display: block; margin: 10px 0; } input[type="text"], input[type="password"] { width: 80%; padding: 10px; margin: 10px 0; background: none; border: #111; border-bottom: 1px solid #666; background-color: transparent; } button { font-size: 15px; background-color: transparent; border: none; padding: 10px 40%; border-radius: 5px; cursor: pointer; border-radius: 50px; transition: background-color 0.3s; visibility: hidden; } button:hover { background-color: #eee; } 
     </style>
 </head>
-
 <body>
     <div class="login-container">
         <h2>Login to P1ckle</h2>
@@ -90,7 +25,7 @@
         const loginbutton = document.getElementById('login');
         loginbutton.style.visibility = 'visible';
         const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-
+        
         if (!isLoggedIn || isLoggedIn !== "true") {
             alert("Please login.");
         } else {
@@ -119,8 +54,8 @@
                 // Set a session variable to indicate that the user is logged in
                 sessionStorage.setItem('isLoggedIn', 'true');
                 // Redirect to home.html on successful login
-                window.location.href = 'home.html';
                 alert("Login successful.");
+                window.location.href = 'home.html';
                 return false;
             } else {
                 alert('Invalid username or password. Please try again.');
@@ -129,5 +64,4 @@
         }
     </script>
 </body>
-
 </html>
