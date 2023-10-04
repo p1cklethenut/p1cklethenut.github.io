@@ -83,13 +83,17 @@
         </form>
         <button onclick="continueToPickle()" id="continuebutton">Continue to P1ckle</button>
     </div>
-    <!-- Menu -->
+
+    <!-- JavaScript -->
     <script src="credentials.js"></script>
     <script>
         const loginbutton = document.getElementById('login');
         loginbutton.style.visibility = 'visible';
         const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-        if (!isLoggedIn || isLoggedIn == 'true') {
+
+        if (!isLoggedIn || isLoggedIn !== "true") {
+            alert("Please login.");
+        } else {
             const continueButton = document.getElementById('continuebutton');
             continueButton.style.visibility = 'visible';
         }
