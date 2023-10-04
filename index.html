@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <meta charset="UTF-8">
@@ -22,7 +23,8 @@
         }
 
         .login-container {
-            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+            background-color: rgba(255, 255, 255, 0.5);
+            /* Semi-transparent white background */
             padding: 20px;
             width: 50%;
             max-width: 800px;
@@ -42,7 +44,8 @@
             margin: 10px 0;
         }
 
-        input[type="text"], input[type="password"] {
+        input[type="text"],
+        input[type="password"] {
             width: 80%;
             padding: 10px;
             margin: 10px 0;
@@ -60,48 +63,31 @@
             border-radius: 5px;
             cursor: pointer;
             border-radius: 50px;
-            transition: background-color 0.3s; /* Added transition for button */
+            transition: background-color 0.3s;
+            visibility: hidden;
         }
 
         button:hover {
             background-color: #eee;
         }
-
-        /* Menu styles */
-        .menu {
-            background-color: #333;
-            padding: 10px 0;
-            text-align: center;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            margin: 0 20px;
-            transition: color 0.3s;
-        }
-
-        .menu a:hover {
-            color: #3498db;
-        }
     </style>
 </head>
+
 <body>
     <div class="login-container">
         <h2>Login to P1ckle</h2>
         <form id="loginForm" onsubmit="return login()">
             <input type="text" id="username" placeholder="Username" required><br>
             <input type="password" id="password" placeholder="Password" required><br>
-            <button type="submit">Login</button>
+            <button type="submit" id="login">Login</button>
         </form>
         <button onclick="continueToPickle()" id="continuebutton">Continue to P1ckle</button>
     </div>
     <!-- Menu -->
     <script src="credentials.js"></script>
     <script>
+        const loginbutton = document.getElementById('login');
+        loginbutton.style.visibility = 'visible';
         const isLoggedIn = sessionStorage.getItem('isLoggedIn');
         if (!isLoggedIn || isLoggedIn == 'true') {
             const continueButton = document.getElementById('continuebutton');
@@ -139,4 +125,5 @@
         }
     </script>
 </body>
+
 </html>
