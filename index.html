@@ -4,7 +4,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,17 +17,24 @@
             min-height: 100vh;
             background-image: url('background.jpg');
             background-repeat: no-repeat;
-            background-attachment: fixed;  
+            background-attachment: fixed;
             background-size: cover;
         }
 
         .login-container {
-            background-color: none;
+            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
             padding: 20px;
             width: 50%;
             max-width: 800px;
             text-align: center;
             color: #333;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         label {
@@ -53,6 +60,7 @@
             border-radius: 5px;
             cursor: pointer;
             border-radius: 50px;
+            transition: background-color 0.3s; /* Added transition for button */
         }
 
         button:hover {
@@ -83,17 +91,31 @@
 </head>
 <body>
     <div class="login-container">
-        <h2>login to p1ckle</h2>
+        <h2>Login to P1ckle</h2>
         <form id="loginForm" onsubmit="return login()">
-            <input type="text" id="username" placeholder="username" required><br>
-            <input type="password" id="password" placeholder="password" required><br>
-            <button type="submit">login</button>
+            <input type="text" id="username" placeholder="Username" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
         </form>
+        <button onclick="continueToPickle()" id="continuebutton">Continue to P1ckle</button>
     </div>
     <!-- Menu -->
-    
     <script src="credentials.js"></script>
     <script>
+        const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+        if (!isLoggedIn || isLoggedIn == 'true') {
+            const continueButton = document.getElementById('continuebutton');
+            continueButton.style.visibility = 'visible';
+        }
+
+        function continueToPickle() {
+            if (confirm("You have already logged in. Do you want to continue to P1ckle?")) {
+                window.location.href = 'home.html';
+                alert("Continuing to P1ckle.");
+            } else {
+                alert("If you misclicked and desired to continue, press the Continue button below login.");
+            }
+        }
 
         function login() {
             const enteredUsername = document.getElementById('username').value;
@@ -103,19 +125,18 @@
                 credential.username === enteredUsername && credential.password === enteredPassword
             ));
 
-                if (matchedCredential) {
-                    // Set a session variable to indicate that the user is logged in
-                    sessionStorage.setItem('isLoggedIn', 'true');
-                    // Redirect to home.html on successful login
-                    window.location.href = 'home.html';
-                    alert("Login succesful.")
-                    return false;
+            if (matchedCredential) {
+                // Set a session variable to indicate that the user is logged in
+                sessionStorage.setItem('isLoggedIn', 'true');
+                // Redirect to home.html on successful login
+                window.location.href = 'home.html';
+                alert("Login successful.");
+                return false;
             } else {
                 alert('Invalid username or password. Please try again.');
                 return false;
             }
         }
-    
     </script>
 </body>
 </html>
