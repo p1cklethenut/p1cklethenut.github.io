@@ -7,7 +7,6 @@
     <title>Login</title>
     <style>
         body {
-            background-color: #f0f0f0; /* Light grey background color */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -16,17 +15,20 @@
             align-items: center;
             justify-content: center;
             min-height: 100vh;
+            background-image: url('background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;  
+            background-size: cover;
         }
 
         .login-container {
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 15px;
+            background-color: none;
             padding: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 80%;
+            width: 50%;
             max-width: 800px;
             text-align: center;
+            color: #fff;
+
         }
 
         label {
@@ -38,21 +40,21 @@
             width: 80%;
             padding: 10px;
             margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            background: none;
+            border: #111;
+            border-bottom: 1px solid #666;
         }
 
         button {
-            background-color: #3498db;
-            color: #fff;
+            background-color: none;
             border: none;
-            padding: 10px 20px;
+            padding: 10px 40%;
             border-radius: 5px;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #2980b9;
+            background-color: #999;
         }
 
         /* Menu styles */
@@ -81,8 +83,8 @@
     <div class="login-container">
         <h2>Login</h2>
         <form id="loginForm" onsubmit="return login()">
-            <input type="text" id="username" placeholder="user1" required><br>
-            <input type="password" id="password" placeholder="password1"required><br>
+            <input type="text" id="username" placeholder="username" required><br>
+            <input type="password" id="password" placeholder="password"required><br>
             <button type="submit">Login</button>
         </form>
     </div>
@@ -104,6 +106,7 @@
                     sessionStorage.setItem('isLoggedIn', 'true');
                     // Redirect to home.html on successful login
                     window.location.href = 'home.html';
+                    alert("Login succesful.")
                     return false;
             } else {
                 alert('Invalid username or password. Please try again.');
