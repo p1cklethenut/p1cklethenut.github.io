@@ -4,7 +4,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Page</title>
+    <title id="title">Weather</title>
     <style>
         body {
             background-color: #f0f0f0; /* Light grey background color */
@@ -19,7 +19,7 @@
         }
 
         .weather-container {
-            background-color: #fff;
+            background-color: #333;
             border: 1px solid #ddd;
             border-radius: 15px;
             padding: 20px;
@@ -33,13 +33,12 @@
         h1 {
             font-size: 24px;
             margin-bottom: 20px;
+            color: #fff;
         }
-
         .weather-details {
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: #f9f9f9;
+            padding: 200px;
+            border: 10px solid #444;
+            background-color: #333;
         }
 
         /* Menu styles */
@@ -53,15 +52,18 @@
         }
 
         .menu a {
+            padding: 10px;
             text-decoration: none;
+            background-color: #333;
             color: #fff;
             font-weight: bold;
-            margin: 0 20px;
-            transition: color 0.3s;
+            margin: 20px;
+            transition: color 0.5s;
         }
 
         .menu a:hover {
             color: #3498db;
+            
         }
         .tab-input {
             position: absolute; /* Position it absolutely within the menu */
@@ -79,37 +81,45 @@
             background-color: #333; /* Background color matches the menu */
             color: #fff; /* Text color matches the menu */
             border: none;
-            border-bottom: 1px solid #fff; /* Add an underline */
+            border-bottom: 1px solid #999; /* Add an underline */
         }
 
         .tab-input button {
             background-color: #333; /* Background color matches the menu */
-            color: #fff; /* Text color matches the menu */
+            color: #999; /* Text color matches the menu */
             border: none;
             padding: 5px 10px;
             border-radius: 5px;
             cursor: pointer;
+            transition: color 0.5s;
         }
 
-        .tab-input button:hover {
-            background-color: #555; /* Hover color */
+        .tab-input button:hover { /* Hover color */
+            color: #3498db;
         }
+
     </style>
     <!-- Link to your JavaScript file for functionality -->
     <script src="weather.js"></script>
     <!-- Include a favicon if desired -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script>
+        var title = document.getElementById('title');
         function changeTabName() {
-            const tabNameInput = document.getElementById('tabName');
-            const newTabName = tabNameInput.value.trim();
+            var tabNameInput = document.getElementById('tabName');
+            var newTabName = tabNameInput.value.trim();
 
             if (newTabName !== '') {
-                const activeTab = document.querySelector('.menu a.active');
-                if (activeTab) {
-                    activeTab.textContent = newTabName;
+                title.innerHTML = newTabName;
+                tabNameInput.value = '';
                 }
             }
+        }
+        // Check if the user is logged in
+        const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+        if (!isLoggedIn || isLoggedIn !== 'true') {
+            // If not logged in, redirect to the login page
+            window.location.href = 'index.html';
         }
     </script>
 </head>
