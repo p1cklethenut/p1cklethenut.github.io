@@ -49,6 +49,7 @@
             text-align: center;
             width: 100%;
             margin-bottom: 20px;
+            position: relative; /* Add this position rule */
         }
 
         .menu a {
@@ -62,11 +63,55 @@
         .menu a:hover {
             color: #3498db;
         }
+        .tab-input {
+            position: absolute; /* Position it absolutely within the menu */
+            top: 0;
+            right: 0;
+            background-color: #333; /* Background color matches the menu */
+            padding: 5px;
+            display: flex; /* Flexbox layout for horizontal alignment */
+            align-items: center; /* Center vertically */
+        }
+
+        .tab-input input[type="text"] {
+            width: 150px;
+            padding: 5px;
+            background-color: #333; /* Background color matches the menu */
+            color: #fff; /* Text color matches the menu */
+            border: none;
+            border-bottom: 1px solid #fff; /* Add an underline */
+        }
+
+        .tab-input button {
+            background-color: #333; /* Background color matches the menu */
+            color: #fff; /* Text color matches the menu */
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .tab-input button:hover {
+            background-color: #555; /* Hover color */
+        }
     </style>
     <!-- Link to your JavaScript file for functionality -->
     <script src="weather.js"></script>
     <!-- Include a favicon if desired -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script>
+        function changeTabName() {
+            const tabNameInput = document.getElementById('tabName');
+            const newTabName = tabNameInput.value.trim();
+
+            if (newTabName !== '') {
+                const activeTab = document.querySelector('.menu a.active');
+                if (activeTab) {
+                    activeTab.textContent = newTabName;
+                }
+            }
+        }
+    </script>
 </head>
 <body>
     <!-- Menu -->
@@ -75,6 +120,10 @@
         <a href="youtube.html">YouTube</a>
         <a href="dino.html">Dino</a>
         <a href="weather.html">Weather</a>
+        <div class="tab-input">
+            <input type="text" id="tabName" placeholder="Enter Tab Name">
+            <button onclick="changeTabName()">Change Tab Name</button>
+        </div>
     </div>
     <!-- Weather display container -->
     <div class="weather-container">
