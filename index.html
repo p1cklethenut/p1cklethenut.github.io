@@ -176,7 +176,7 @@
         <p>Hello, this is a small side project I have been working on. It is definitely a work in progress. If you seek to login but don't know the accounts, please wait patiently as this project is far from done.</p>
     </div>
 </div>
-<div class="footnote">Version 1.02 - 9 Oct</div>
+<div class="footnote">Version 1.025 - 9 Oct</div>
 <!-- JavaScript -->
 <script src="credentials.js"></script>
 <script>
@@ -217,7 +217,6 @@
         if (matchedCredential) {
             // Set a session variable to indicate that the user is logged in
             sessionStorage.setItem('isLoggedIn', 'true');
-            sessionStorage.setItem('username', enteredUsername);
             // Redirect to home.html on successful login
             alert("Login successful.");
             window.location.href = 'home.html';
