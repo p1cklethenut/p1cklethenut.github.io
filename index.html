@@ -7,8 +7,9 @@
     <title>Login</title>
     <style>
         * {
-        font-family: Verdana, sans-serif;
+            font-family: Verdana, sans-serif;
         }
+
         /* Reset some default styles for better consistency */
         body, h2, p {
             margin: 0;
@@ -47,11 +48,11 @@
             width: 80%;
             max-width: 400px;
         }
+
         .pickle {
             font-weight: bold; /* Make it bold */
             color: #60a1eb; /* Change its color to green */
         }
-        
 
         .login-container h2 {
             font-size: 24px;
@@ -65,7 +66,7 @@
 
         .login-container input[type="text"],
         .login-container input[type="password"] {
-            width:85%;
+            width: 85%;
             padding: 10px;
             margin: 10px 0;
             background: none;
@@ -73,11 +74,11 @@
             background-color: rgba(20, 20, 20, 0.02);
             border-radius: 16px;
         }
-        
+
         .login-container button {
             font-size: 15px;
             background-color: transparent;
-            color: #777;
+            color: #999;
             border: none;
             padding: 10px;
             border-radius: 5px;
@@ -88,9 +89,9 @@
             width: 100%;
             z-index: 1; /* Ensure text is above the pseudo-element */
             transition: color 0.3s ease;
-            visibility: hidden;
+            display: none;
         }
-        
+
         .login-container button::before {
             content: "";
             position: absolute;
@@ -99,18 +100,18 @@
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            background-color: #999;
+            background-color: #bbb;
             transform-origin: center; /* Set the transform origin to the center */
             transform: scale(0); /* Initially scale to 0 */
             transition: transform 0.3s ease, background-color 0.3s ease; /* Transition both properties */
             border-radius: 5px; /* Match the border radius of the button */
             z-index: -1; /* Place it below the button text */
         }
-        
+
         .login-container button:hover {
             color: #fff; /* Change text color to white on hover */
         }
-        
+
         .login-container button:hover::before {
             transform: scale(1); /* Scale to 1 on hover */
         }
@@ -138,10 +139,11 @@
             line-height: 1.6;
             color: #444;
         }
-        
+
         .footnote {
-            background-color: rgba(200, 200, 200, 0.5); 
-            color: #777; /* Text color */
+            background-color: rgba(200, 200, 200, 0.5);
+            color: #777;
+            /* Text color */
             font-weight: bold;
             padding: 5px;
             position: absolute;
@@ -156,65 +158,73 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="login-column">
-            <div class="login-container">
-                <h2>Login to <span class="pickle">P1ckle</span></h2>
-                <form id="loginForm">
-                    <input type="text" id="username" placeholder="Username" required><br>
-                    <input type="password" id="password" placeholder="Password" required><br>
-                    <button type="button" id="login">Login</button>
-                </form>
-                <button onclick="continueToPickle()" id="continuebutton">Continue to P1ckle</button>
-            </div>
-        </div>
-        <div class="description-column">
-            <h2>Welcome to <span class="pickle">P1ckle</span></h2>
-            <p>Hello, this is a small side project i have been working on. It is definitely a work in progress. If you seek to login but dont know the accounts, please wait patiently as this project is far from done.</p>
+<div class="container">
+    <div class="login-column">
+        <div class="login-container">
+            <h2>Login to <span class="pickle">P1ckle</span></h2>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required><br>
+                <input type="password" id="password" placeholder="Password" required><br>
+                <button type="button" id="login">Login</button>
+            </form>
+            <button onclick="continueToPickle()" id="continuebutton">Continue to <span class="pickle">P1ckle</span></button>
+            <button onclick="refreshPage()" id="refreshpage">Refresh Page</button>
         </div>
     </div>
-    <div class="footnote">Version 1.01 - 9 oct</div>
-    <!-- JavaScript -->
-    <script src="credentials.js"></script>
-    <script>
-        const loginbutton = document.getElementById('login');
-        loginbutton.style.visibility = 'visible';
-        const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-        
-        if (!isLoggedIn || isLoggedIn !== "true") {
-            alert("Please login.");
+    <div class="description-column">
+        <h2>Welcome to <span class="pickle">P1ckle</span></h2>
+        <p>Hello, this is a small side project I have been working on. It is definitely a work in progress. If you seek to login but don't know the accounts, please wait patiently as this project is far from done.</p>
+    </div>
+</div>
+<div class="footnote">Version 1.02 - 9 Oct</div>
+<!-- JavaScript -->
+<script src="credentials.js"></script>
+<script>
+    const loginbutton = document.getElementById('login');
+    loginbutton.style.display = 'inline';
+    const refreshbutton = document.getElementById('refreshpage');
+    refreshbutton.style.display = 'inline';
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+
+    if (!isLoggedIn || isLoggedIn !== "true") {
+        alert("Please login.");
+    } else {
+        const continueButton = document.getElementById('continuebutton');
+        continueButton.style.display = 'inline';
+    }
+
+    function continueToPickle() {
+        if (confirm("You have already logged in. Do you want to continue to P1ckle?")) {
+            window.location.href = 'home.html';
+            alert("Continuing to P1ckle.");
         } else {
-            const continueButton = document.getElementById('continuebutton');
-            continueButton.style.visibility = 'visible';
+            alert("If you misclicked and desired to continue, press the Continue button below login.");
         }
+    }
 
-        function continueToPickle() {
-            if (confirm("You have already logged in. Do you want to continue to P1ckle?")) {
-                window.location.href = 'home.html';
-                alert("Continuing to P1ckle.");
-            } else {
-                alert("If you misclicked and desired to continue, press the Continue button below login.");
-            }
+    function refreshPage() {
+        location.reload();
+    }
+
+    document.getElementById('login').addEventListener('click', function () {
+        const enteredUsername = document.getElementById('username').value;
+        const enteredPassword = document.getElementById('password').value;
+
+        const matchedCredential = credentials.find(credential => (
+            credential.username === enteredUsername && credential.password === enteredPassword
+        ));
+
+        if (matchedCredential) {
+            // Set a session variable to indicate that the user is logged in
+            sessionStorage.setItem('isLoggedIn', 'true');
+            sessionStorage.setItem('username', enteredUsername);
+            // Redirect to home.html on successful login
+            alert("Login successful.");
+            window.location.href = 'home.html';
+        } else {
+            alert('Invalid username or password. Please try again.');
         }
-
-        document.getElementById('login').addEventListener('click', function() {
-            const enteredUsername = document.getElementById('username').value;
-            const enteredPassword = document.getElementById('password').value;
-
-            const matchedCredential = credentials.find(credential => (
-                credential.username === enteredUsername && credential.password === enteredPassword
-            ));
-
-            if (matchedCredential) {
-                // Set a session variable to indicate that the user is logged in
-                sessionStorage.setItem('isLoggedIn', 'true');
-                // Redirect to home.html on successful login
-                alert("Login successful.");
-                window.location.href = 'home.html';
-            } else {
-                alert('Invalid username or password. Please try again.');
-            }
-        });
-    </script>
+    });
+</script>
 </body>
 </html>
