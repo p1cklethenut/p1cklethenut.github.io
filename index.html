@@ -21,6 +21,10 @@
             justify-content: center; /* Center horizontally */
             align-items: center; /* Center vertically */
             min-height: 100vh; /* Make the container at least the height of the viewport */
+            background-image: url('background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
         }
 
         /* Left column for login */
@@ -30,10 +34,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-image: url('background.jpg');
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
         }
 
         .login-container {
@@ -88,6 +88,7 @@
             width: 100%;
             z-index: 1; /* Ensure text is above the pseudo-element */
             transition: color 0.3s ease;
+            visibility: hidden;
         }
         
         .login-container button::before {
@@ -172,7 +173,7 @@
             <p>Hello, this is a small side project i have been working on. It is definitely a work in progress. If you seek to login but dont know the accounts, please wait patiently as this project is far from done.</p>
         </div>
     </div>
-    <div class="footnote">Version 1.0 - 9 oct</div>
+    <div class="footnote">Version 1.01 - 9 oct</div>
     <!-- JavaScript -->
     <script src="credentials.js"></script>
     <script>
