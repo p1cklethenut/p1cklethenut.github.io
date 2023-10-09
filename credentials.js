@@ -1,10 +1,17 @@
 // credentials.js
+const credJSON = process.env.CREDENTIALS;
 
-const credentials = [
-    { username: 'user1', password: 'password1' },
-    { username: 'user2', password: 'password2' },
-    { username: 'user3', password: 'password3' },
-];
+try {
+  // Parse the JSON string into a JavaScript array
+  const credentials = JSON.parse(credJSON);
+
+
+  console.log(cred);
+} catch (error) {
+  console.error("Error parsing the secret list:", error);
+}
+
+
 
 // Export the credentials array
 module.exports = credentials;
