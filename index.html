@@ -5,18 +5,158 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <style> body { font-family: Arial, sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; background-image: url('background.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover; } .login-container { background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */ padding: 20px; width: 50%; max-width: 800px; text-align: center; color: #333; border-radius: 15px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); } h2 { font-size: 24px; margin-bottom: 20px; } label { display: block; margin: 10px 0; } input[type="text"], input[type="password"] { width: 80%; padding: 10px; margin: 10px 0; background: none; border: #111; border-bottom: 1px solid #666; background-color: transparent; } button { font-size: 15px; background-color: transparent; border: none; padding: 10px 40%; border-radius: 5px; cursor: pointer; border-radius: 50px; transition: background-color 0.3s; visibility: hidden; } button:hover { background-color: #eee; } 
+    <style>
+        * {
+        font-family: Verdana, sans-serif;
+        }
+        /* Reset some default styles for better consistency */
+        body, h2, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container for the entire page */
+        .container {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            min-height: 100vh; /* Make the container at least the height of the viewport */
+        }
+
+        /* Left column for login */
+        .login-column {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .login-container {
+            background-color: rgba(255, 255, 255, 0.5);
+            /* Semi-transparent white background */
+            padding: 20px;
+            text-align: center;
+            color: #777;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 400px;
+        }
+        .pickle {
+            font-weight: bold; /* Make it bold */
+            color: #60a1eb; /* Change its color to green */
+        }
+        
+
+        .login-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .login-container label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width:85%;
+            padding: 10px;
+            margin: 10px 0;
+            background: none;
+            border: #111;
+            background-color: rgba(20, 20, 20, 0.02);
+            border-radius: 16px;
+        }
+        
+        .login-container button {
+            font-size: 15px;
+            background-color: transparent;
+            color: #777;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            z-index: 1; /* Ensure text is above the pseudo-element */
+            transition: color 0.3s ease;
+        }
+        
+        .login-container button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #999;
+            transform-origin: center; /* Set the transform origin to the center */
+            transform: scale(0); /* Initially scale to 0 */
+            transition: transform 0.3s ease, background-color 0.3s ease; /* Transition both properties */
+            border-radius: 5px; /* Match the border radius of the button */
+            z-index: -1; /* Place it below the button text */
+        }
+        
+        .login-container button:hover {
+            color: #fff; /* Change text color to white on hover */
+        }
+        
+        .login-container button:hover::before {
+            transform: scale(1); /* Scale to 1 on hover */
+        }
+
+        /* Right column for website description */
+        .description-column {
+            flex: 1;
+            background-color: transparent;
+            /* Semi-transparent white background */
+            padding: 20px;
+            text-align: center;
+            color: #333;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        .description-column h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #777;
+        }
+
+        .description-column p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #444;
+        }
+
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login to P1ckle</h2>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Username" required><br>
-            <input type="password" id="password" placeholder="Password" required><br>
-            <button type="button" id="login">Login</button>
-        </form>
-        <button onclick="continueToPickle()" id="continuebutton">Continue to P1ckle</button>
+    <div class="container">
+        <div class="login-column">
+            <div class="login-container">
+                <h2>Login to <span class="pickle">P1ckle</span></h2>
+                <form id="loginForm">
+                    <input type="text" id="username" placeholder="Username" required><br>
+                    <input type="password" id="password" placeholder="Password" required><br>
+                    <button type="button" id="login">Login</button>
+                </form>
+                <button onclick="continueToPickle()" id="continuebutton">Continue to P1ckle</button>
+            </div>
+        </div>
+        <div class="description-column">
+            <h2>Welcome to <span class="pickle">P1ckle</span></h2>
+            <p>Hello, this is a small side project i have been working on. It is definitely a work in progress. If you seek to login but dont know the accounts, please wait patiently as this project is far from done.</p>
+        </div>
     </div>
 
     <!-- JavaScript -->
