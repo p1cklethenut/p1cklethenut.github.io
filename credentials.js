@@ -6,7 +6,7 @@ try {
   const credentials = JSON.parse(credJSON);
 
 
-  console.log(cred);
+  console.log(credentials);
 } catch (error) {
   console.error("Error parsing the secret list:", error);
 }
