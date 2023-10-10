@@ -7,7 +7,10 @@
     <title>YouTube</title>
     <style>
         body {
-            background-color: #f0f0f0; /* Light grey background color */
+            background-image: url('background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
@@ -15,7 +18,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            min-height: 100vh;
+            height: 100vh;
         }
 
         .video-container {
@@ -97,6 +100,33 @@
         .tutorial-step {
             margin-bottom: 10px;
         }
+
+        .top-menu-button {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+            background-color: transparent;
+            padding: 8px 15px;
+            border-radius: 5px;
+            border-color: #fff;
+            border-width: 300px;
+            position: absolute;
+            right: 1%;
+        }
+        .username {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            background-color: transparent;
+            padding: 8px 15px;
+            position: absolute;
+            right: 15%;
+        }
+
+        .top-menu-button:hover {
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -107,9 +137,17 @@
             // If not logged in, redirect to the login page
             window.location.href = 'index.html';
         }
+
+        // Retrieve the username from sessionStorage
+        const username = sessionStorage.getItem('username');
+        const userdisplay = document.getElementById('username');
+        userdisplay.textContent = username
     </script>
     <!-- Menu -->
-    <div class="menu">
+    <div class="top-menu">
+        <!-- Button to go to index.html (Logout) -->
+        <span class="username">username</span>
+        <a href="index.html" class="top-menu-button">[click to logout]</a>
         <a href="home.html">Home</a>
         <a href="youtube.html">YouTube</a>
         <a href="dino.html">Dino</a>
