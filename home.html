@@ -7,16 +7,17 @@
     <title>P1ckle</title>
     <style>
         body {
-            background: linear-gradient(135deg, #ddd, #ccc); /* Gradient from light grey to dark grey */
-            background-size: 200% 200%;
-            animation: gradientBackground 10s linear infinite;
+            background-image: url('background.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Align content to the top */
+            justify-content: flex-start;
             height: 100vh;
         }
 
@@ -47,7 +48,12 @@
             padding: 10px 0;
             text-align: center;
             width: 100%;
-            margin-bottom: 20px; /* Add margin to push content below */
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 0;
         }
 
         .top-menu a {
@@ -59,7 +65,36 @@
         }
 
         .top-menu a:hover {
-            color: #3498db; /* Change color on hover */
+            color: #3498db;
+        }
+
+
+        /* Button to go to index.html (Logout) */
+        .top-menu-button {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+            background-color: transparent;
+            padding: 8px 15px;
+            border-radius: 5px;
+            border-color: #fff;
+            border-width: 300px;
+            position: absolute;
+            right: 1%;
+        }
+        .username {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            background-color: transparent;
+            padding: 8px 15px;
+            position: absolute;
+            right: 15%;
+        }
+
+        .top-menu-button:hover {
+            color: #333;
         }
 
         main {
@@ -86,7 +121,7 @@
             border: 1px solid #ddd;
             padding: 20px;
             margin: 20px;
-            border-radius: 15px; /* Rounded corners */
+            border-radius: 15px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
@@ -116,12 +151,6 @@
             border-radius: 15px;
             margin-top: 20px;
         }
-
-        /* Align the top-menu to the top */
-        .top-menu {
-            position: sticky;
-            top: 0;
-        }
     </style>
 </head>
 <body>
@@ -132,9 +161,17 @@
             // If not logged in, redirect to the login page
             window.location.href = 'index.html';
         }
+
+        // Retrieve the username from sessionStorage
+        const username = sessionStorage.getItem('username');
+        const userdisplay = document.getElementById('username');
+        userdisplay.textContent = username
     </script>
     <!-- Top Menu -->
     <div class="top-menu">
+        <!-- Button to go to index.html (Logout) -->
+        <span class="username">username</span>
+        <a href="index.html" class="top-menu-button">[click to logout]</a>
         <a href="home.html">Home</a>
         <a href="youtube.html">YouTube</a>
         <a href="dino.html">Dino</a>
@@ -155,4 +192,5 @@
             <p>nah</p>
         </section>
     </main>
-    <!-- Sectioning between
+</body>
+</html>
