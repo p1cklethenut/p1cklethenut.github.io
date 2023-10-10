@@ -178,51 +178,64 @@
 </div>
 <div class="footnote">Version 1.025 - 9 Oct</div>
 <!-- JavaScript -->
-<script src="credentials.js"></script>
 <script>
-    const loginbutton = document.getElementById('login');
-    loginbutton.style.display = 'inline';
-    const refreshbutton = document.getElementById('refreshpage');
-    refreshbutton.style.display = 'inline';
-    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
-
-    if (!isLoggedIn || isLoggedIn !== "true") {
-        alert("Please login.");
-    } else {
-        const continueButton = document.getElementById('continuebutton');
-        continueButton.style.display = 'inline';
+    // Function to load the script dynamically
+    function loadScript(src, callback) {
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = src;
+        script.onload = callback;
+        document.body.appendChild(script);
     }
 
-    function continueToPickle() {
-        if (confirm("You have already logged in. Do you want to continue to P1ckle?")) {
-            window.location.href = 'home.html';
-            alert("Continuing to P1ckle.");
+    // Load the credentials.js file asynchronously
+    loadScript('credentials.js', function () {
+        // Now, you can access the `credentials` variable from credentials.js
+        const loginbutton = document.getElementById('login');
+        loginbutton.style.display = 'inline';
+        const refreshbutton = document.getElementById('refreshpage');
+        refreshbutton.style.display = 'inline';
+        const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+
+        if (!isLoggedIn || isLoggedIn !== "true") {
+            alert("Please login.");
         } else {
-            alert("If you misclicked and desired to continue, press the Continue button below login.");
+            const continueButton = document.getElementById('continuebutton');
+            continueButton.style.display = 'inline';
         }
-    }
 
-    function refreshPage() {
-        location.reload();
-    }
-
-    document.getElementById('login').addEventListener('click', function () {
-        const enteredUsername = document.getElementById('username').value;
-        const enteredPassword = document.getElementById('password').value;
-
-        const matchedCredential = credentials.find(credential => (
-            credential.username === enteredUsername && credential.password === enteredPassword
-        ));
-
-        if (matchedCredential) {
-            // Set a session variable to indicate that the user is logged in
-            sessionStorage.setItem('isLoggedIn', 'true');
-            // Redirect to home.html on successful login
-            alert("Login successful.");
-            window.location.href = 'home.html';
-        } else {
-            alert('Invalid username or password. Please try again.');
+        function continueToPickle() {
+            if (confirm("You have already logged in. Do you want to continue to P1ckle?")) {
+                window.location.href = 'home.html';
+                alert("Continuing to P1ckle.");
+            } else {
+                alert("If you misclicked and desired to continue, press the Continue button below login.");
+            }
         }
+
+        function refreshPage() {
+            location.reload();
+        }
+
+        document.getElementById('login').addEventListener('click', function () {
+            const enteredUsername = document.getElementById('username').value;
+            const enteredPassword = document.getElementById('password').value;
+
+            // Now, you can access the `credentials` variable
+            const matchedCredential = credentials.find(credential => (
+                credential.username === enteredUsername && credential.password === enteredPassword
+            ));
+
+            if (matchedCredential) {
+                // Set a session variable to indicate that the user is logged in
+                sessionStorage.setItem('isLoggedIn', 'true');
+                // Redirect to home.html on successful login
+                alert("Login successful.");
+                window.location.href = 'home.html';
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
+        });
     });
 </script>
 </body>
