@@ -21,6 +21,82 @@
             height: 100vh;
         }
 
+        @keyframes gradientBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* Styling for the top menu */
+        .top-menu {
+            background-color: #333;
+            padding: 10px 0;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+        }
+
+        .top-menu a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            margin: 0 20px;
+            transition: color 0.3s;
+        }
+
+        .top-menu a:hover {
+            color: #3498db;
+        }
+
+        /* Button to go to index.html (Logout) */
+        .top-menu-button {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s;
+            background-color: transparent;
+            padding: 8px 15px;
+            border-radius: 5px;
+            border-color: #fff;
+            border-width: 300px;
+            position: absolute;
+            right: 1%;
+        }
+
+        .username {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            background-color: transparent;
+            padding: 8px 15px;
+            position: absolute;
+            right: 15%;
+        }
+
+        .top-menu-button:hover {
+            color: #333;
+        }
+
         .video-container {
             background-color: #fff;
             border: 1px solid #ddd;
@@ -59,27 +135,6 @@
             background-color: #2980b9;
         }
 
-        /* Menu styles */
-        .menu {
-            background-color: #333;
-            padding: 10px 0;
-            text-align: center;
-            width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .menu a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            margin: 0 20px;
-            transition: color 0.3s;
-        }
-
-        .menu a:hover {
-            color: #3498db;
-        }
-
         /* Tutorial section styles */
         .tutorial-section {
             background-color: #fff;
@@ -100,33 +155,6 @@
         .tutorial-step {
             margin-bottom: 10px;
         }
-
-        .top-menu-button {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            transition: color 0.3s;
-            background-color: transparent;
-            padding: 8px 15px;
-            border-radius: 5px;
-            border-color: #fff;
-            border-width: 300px;
-            position: absolute;
-            right: 1%;
-        }
-        .username {
-            text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            background-color: transparent;
-            padding: 8px 15px;
-            position: absolute;
-            right: 15%;
-        }
-
-        .top-menu-button:hover {
-            color: #333;
-        }
     </style>
 </head>
 <body>
@@ -140,13 +168,12 @@
 
         // Retrieve the username from sessionStorage
         const username = sessionStorage.getItem('username');
-        const userdisplay = document.getElementById('username');
-        userdisplay.textContent = username
     </script>
-    <!-- Menu -->
+    <!-- Top Menu -->
     <div class="top-menu">
+        <!-- Username display -->
+        <span class="username">Welcome, <span id="username"></span>!</span>
         <!-- Button to go to index.html (Logout) -->
-        <span class="username">username</span>
         <a href="index.html" class="top-menu-button">[click to logout]</a>
         <a href="home.html">Home</a>
         <a href="youtube.html">YouTube</a>
@@ -189,7 +216,7 @@
             <strong>Step 1:</strong> Search the name of the video or browse for one in <a href="https://www.google.com" target="_blank">Google</a>.
         </div>
         <div class="tutorial-step">
-            <strong>Step 2:</strong> Right click (alt+click on chromebook) on the blue link, press "Copy link address"
+            <strong>Step 2:</strong> Right-click (alt+click on chromebook) on the blue link, press "Copy link address."
         </div>
         <div class="tutorial-step">
             <strong>Step 3:</strong> Paste the copied URL into the "Enter YouTube Video URL" field above.
