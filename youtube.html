@@ -155,6 +155,66 @@
         .tutorial-step {
             margin-bottom: 10px;
         }
+
+        /* Styling for the YouTube Video Downloader section */
+        .section {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .video-downloader-container {
+            width: 100%;
+        }
+
+        .video-downloader-container h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #downloadForm {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #downloadForm label {
+            font-weight: bold;
+        }
+
+        #youtubeUrl {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        #downloadLinks {
+            margin-top: 20px;
+        }
+
+        button[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
     </style>
 </head>
 <body>
@@ -168,6 +228,8 @@
 
         // Retrieve the username from sessionStorage
         const username = sessionStorage.getItem('username');
+        const userdisplay = document.getElementById('username');
+        userdisplay.textContent = username
     </script>
     <!-- Top Menu -->
     <div class="top-menu">
@@ -226,6 +288,19 @@
         </div>
     </div>
 
+    <!-- YouTube Video Downloader Section -->
+    <section class="section">
+        <div class="video-downloader-container">
+            <h2>YouTube Video Downloader</h2>
+            <form id="downloadForm">
+                <label for="youtubeUrl">Enter YouTube Video URL:</label>
+                <input type="text" id="youtubeUrl" placeholder="https://www.youtube.com/watch?v=your_video_id">
+                <button type="submit">Download</button>
+            </form>
+            <div id="downloadLinks"></div>
+        </div>
+    </section>
+
     <script>
         function embedVideo() {
             const youtubeLink = document.getElementById('youtubeLink').value;
@@ -243,6 +318,27 @@
                 videoContainer.innerHTML = '<p>Invalid YouTube URL. Please enter a valid YouTube video link.</p>';
             }
         }
+
+        // Handle form submission for YouTube video downloader
+        const downloadForm = document.getElementById('downloadForm');
+        const downloadLinks = document.getElementById('downloadLinks');
+        downloadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const youtubeUrl = document.getElementById('youtubeUrl').value;
+            const response = await fetch(`/download?youtubeUrl=${encodeURIComponent(youtubeUrl)}`);
+            const data = await response.json();
+            if (data.success) {
+                downloadLinks.innerHTML = `
+                    <p>Download Links:</p>
+                    <ul>
+                        <li><a href="${data.downloadLinks.mp4}">MP4</a></li>
+                        <li><a href="${data.downloadLinks.mp3}">MP3</a></li>
+                    </ul>
+                `;
+            } else {
+                downloadLinks.innerHTML = '<p>Failed to fetch download links. Please try again later.</p>';
+            }
+        });
     </script>
 </body>
 </html>
