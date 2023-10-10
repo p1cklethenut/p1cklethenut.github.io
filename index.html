@@ -237,7 +237,8 @@
         } else {
             alert('Invalid username or password. Please try again.');
         }
-    });
+        return false; // Prevent the form from submitting
+    }
 </script>
 </body>
 </html>
