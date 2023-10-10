@@ -162,7 +162,7 @@
     <div class="login-column">
         <div class="login-container">
             <h2>Login to <span class="pickle">P1ckle</span></h2>
-            <form id="loginForm">
+            <form id="loginForm" onsubmit="return login()">
                 <input type="text" id="username" placeholder="Username" required><br>
                 <input type="password" id="password" placeholder="Password" required><br>
                 <button type="button" id="login">Login</button>
@@ -219,7 +219,7 @@
         location.reload();
     }
 
-    document.getElementById('login').addEventListener('click', function () {
+    function login() {
         const enteredUsername = document.getElementById('username').value;
         const enteredPassword = document.getElementById('password').value;
 
