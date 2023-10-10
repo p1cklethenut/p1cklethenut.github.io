@@ -176,7 +176,7 @@
         <p>Hello, this is a small side project I have been working on. It is definitely a work in progress. If you seek to login but don't know the accounts, please wait patiently as this project is far from done.</p>
     </div>
 </div>
-<div class="footnote">Version 1.02506 - 10 Oct</div>
+<div class="footnote">Version 1.03 - 10 Oct</div>
 <!-- JavaScript -->
 <script>
     // Function to load the script dynamically
@@ -203,39 +203,40 @@
             const continueButton = document.getElementById('continuebutton');
             continueButton.style.display = 'inline';
         }
-
-        function continueToPickle() {
-            if (confirm("You have already logged in. Do you want to continue to P1ckle?")) {
-                window.location.href = 'home.html';
-                alert("Continuing to P1ckle.");
-            } else {
-                alert("If you misclicked and desired to continue, press the Continue button below login.");
-            }
+    });
+    
+    // Define your functions in the global scope
+    function continueToPickle() {
+        if (confirm("You have already logged in. Do you want to continue to P1ckle?")) {
+            window.location.href = 'home.html';
+            alert("Continuing to P1ckle.");
+        } else {
+            alert("If you misclicked and desired to continue, press the Continue button below login.");
         }
+    }
 
-        function refreshPage() {
-            location.reload();
+    function refreshPage() {
+        location.reload();
+    }
+
+    document.getElementById('login').addEventListener('click', function () {
+        const enteredUsername = document.getElementById('username').value;
+        const enteredPassword = document.getElementById('password').value;
+
+        // Now, you can access the `credentials` variable
+        const matchedCredential = credentials.find(credentials => (
+            credentials.username === enteredUsername && credentials.password === enteredPassword
+        ));
+
+        if (matchedCredential) {
+            // Set a session variable to indicate that the user is logged in
+            sessionStorage.setItem('isLoggedIn', 'true');
+            // Redirect to home.html on successful login
+            alert("Login successful.");
+            window.location.href = 'home.html';
+        } else {
+            alert('Invalid username or password. Please try again.');
         }
-
-        document.getElementById('login').addEventListener('click', function () {
-            const enteredUsername = document.getElementById('username').value;
-            const enteredPassword = document.getElementById('password').value;
-
-            // Now, you can access the `credentials` variable
-            const matchedCredential = credentials.find(credentials => (
-                credentials.username === enteredUsername && credentials.password === enteredPassword
-            ));
-
-            if (matchedCredential) {
-                // Set a session variable to indicate that the user is logged in
-                sessionStorage.setItem('isLoggedIn', 'true');
-                // Redirect to home.html on successful login
-                alert("Login successful.");
-                window.location.href = 'home.html';
-            } else {
-                alert('Invalid username or password. Please try again.');
-            }
-        });
     });
 </script>
 </body>
